@@ -94,13 +94,17 @@ body {
     animation: moveRightToLeft 1000s linear infinite;
     animation-delay: 0s;
     animation-play-state: running;
-    z-index: 2; /* Increase to ensure above gallery */
+    z-index: 1;
     will-change: transform;
 }
 
 @keyframes moveRightToLeft {
     0% { transform: translateX(0) translate(-50%, -50%); }
     100% { transform: translateX(-200%) translate(-50%, -50%); }
+}
+
+body:hover .animated-text {
+    animation-play-state: running;
 }
 
 @media (max-width: 768px) {
@@ -176,4 +180,32 @@ footer {
 .social-icons img {
     width: 24px;
     height: 24px;
+}
+
+.cookie-consent {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #5281EB;
+    color: #FFFFFF;
+    padding: 1rem;
+    text-align: center;
+    z-index: 4;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.cookie-consent button {
+    background-color: #FFFFFF;
+    color: #5281EB;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.cookie-consent button:hover {
+    background-color: #E0E0E0;
 }
