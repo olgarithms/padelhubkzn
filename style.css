@@ -20,7 +20,7 @@ body {
     height: 100%;
     z-index: -1;
     display: flex;
-    flex-direction: row; /* Default horizontal */
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
@@ -28,18 +28,18 @@ body {
     background-color: transparent;
 }
 
-/* Stack gallery vertically on mobile with larger images */
 @media (max-width: 768px) {
     .gallery-background {
-        flex-direction: column; /* Stack images vertically */
-        padding: 1rem 1rem 80px 1rem; /* Add space at bottom for footer */
+        flex-direction: column;
+        padding: 1rem 1rem 80px 1rem;
     }
     .gallery-image {
-        max-width: 90%; /* Increased from 80% for larger images */
-        margin-bottom: 2rem; /* More space between images */
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1.5rem;
     }
     .gallery-image:last-child {
-        margin-bottom: 0; /* Remove margin on last image */
+        margin-bottom: 0;
     }
 }
 
@@ -57,35 +57,20 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: moveRightToLeft 1000s linear infinite; /* Same as desktop */
+    animation: moveRightToLeft 1000s linear infinite;
     animation-delay: 0s;
     animation-play-state: running;
-    z-index: 1; /* Ensure above gallery */
+    z-index: 1;
 }
 
-/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     .animated-text {
-        font-size: 10rem; /* Keep at 10rem */
-        animation: moveRightToLeft 1000s linear infinite;
-        top: 40%; /* Adjust to avoid footer overlap */
+        font-size: 10rem;
+        top: 40%;
     }
-}
-
-@keyframes moveRightToLeft {
-    0% { transform: translateX(0) translate(-50%, -50%); }
-    100% { transform: translateX(-100%) translate(-50%, -50%); } /* Adjusted for single text */
-}
-
-/* Optimize animation for mobile */
-@media (max-width: 768px) {
     @keyframes moveRightToLeft {
         0% { transform: translateX(0) translate(-50%, -50%); }
-        100% { transform: translateX(-200%) translate(-50%, -50%); } /* Extend for mobile */
-    }
-    .animated-text {
-        animation-duration: 1000s; /* Slower and consistent */
-        animation-play-state: running; /* Force play on mobile */
+        100% { transform: translateX(-200%) translate(-50%, -50%); }
     }
 }
 
@@ -93,13 +78,12 @@ body:hover .animated-text {
     animation-play-state: running;
 }
 
-/* Adjust for mobile overflow and footer space */
 @media (max-width: 768px) {
     body {
-        overflow-y: auto; /* Allow vertical scroll if needed */
+        overflow-y: auto;
     }
     .gallery-background {
-        height: calc(100% - 80px); /* Reserve space for footer */
+        height: calc(100% - 80px);
     }
 }
 
@@ -108,14 +92,32 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 2; /* Above animation */
+    z-index: 2;
     min-height: 50px;
-    height: 80px; /* Fixed height for clarity */
+    height: 50px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: row;
+        height: 50px;
+        padding: 0.25rem 0;
+    }
+    .copyright {
+        font-size: 0.6rem;
+        color: #5281eb;
+        margin-left: 0.5rem;
+        white-space: nowrap;
+        content: "© 2025 PadelHub";
+    }
+    .social-icons {
+        margin-right: 0.5rem;
+    }
 }
 
 .copyright {
@@ -137,21 +139,5 @@ footer {
 .social-icons img {
     width: 24px;
     height: 24px;
-    filter: brightness(0) saturate(100%) invert(45%) sepia(26%) saturate(2476%) hue-rotate(202deg) brightness(91%) contrast(93%); /* #5281EB */
-}
-
-/* Responsive footer for mobile */
-@media (max-width: 768px) {
-    footer {
-        flex-direction: column;
-        min-height: 80px; /* More space for stacked elements */
-        height: 80px; /* Consistent with desktop */
-    }
-    .copyright {
-        margin-left: 0;
-        margin-bottom: 0.5rem;
-    }
-    .social-icons {
-        margin-right: 0;
-    }
+    filter: brightness(0) saturate(100%) invert(45%) sepia(26%) saturate(2476%) hue-rotate(202deg) brightness(91%) contrast(93);
 }
