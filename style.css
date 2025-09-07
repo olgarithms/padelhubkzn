@@ -34,10 +34,10 @@ body {
         padding: 1rem 1rem 80px 1rem;
     }
     .gallery-image {
-        max-width: 100%; /* Full width */
+        max-width: 100%;
         height: auto;
         margin-bottom: 1.5rem;
-        object-fit: contain; /* Preserve aspect ratio */
+        object-fit: contain;
     }
     .gallery-image:last-child {
         margin-bottom: 0;
@@ -47,7 +47,7 @@ body {
 .gallery-image {
     max-width: 20%;
     height: auto;
-    object-fit: contain; /* Preserve aspect ratio on desktop too */
+    object-fit: contain;
 }
 
 .animated-text {
@@ -93,7 +93,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #5281EB;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 0.25rem 0;
     text-align: left;
     display: flex;
@@ -112,7 +112,7 @@ footer {
     }
     .copyright {
         font-size: 0.6rem;
-        color: #FFFFFF;
+        color: #5281EB;
         margin-left: 0.5rem;
         white-space: nowrap;
         content: "© 2025 PadelHub";
@@ -124,7 +124,7 @@ footer {
 
 .copyright {
     font-size: 0.7rem;
-    color: #FFFFFF;
+    color: #5281EB;
     margin-left: 1rem;
 }
 
@@ -141,5 +141,4 @@ footer {
 .social-icons img {
     width: 24px;
     height: 24px;
-    filter: brightness(0) saturate(100%) invert(45%) sepia(26%) saturate(2476%) hue-rotate(202deg) brightness(91%) contrast(93);
 }
