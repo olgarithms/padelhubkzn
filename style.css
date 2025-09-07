@@ -109,10 +109,6 @@ body {
     }
 }
 
-body:hover .animated-text {
-    animation-play-state: running;
-}
-
 @media (max-width: 768px) {
     body {
         overflow-y: auto;
@@ -123,8 +119,6 @@ body:hover .animated-text {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 0.25rem 0;
@@ -132,9 +126,23 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 2;
     min-height: 50px;
-    height: 50px;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.copyright {
+    position: relative;
+    font-size: 0.7rem;
+    margin-left: 1rem;
+}
+
+.copyright-line {
+    border: 0;
+    height: 1px;
+    background-color: #5281EB;
+    width: 100%;
+    margin-bottom: 0.5rem;
 }
 
 @media (max-width: 768px) {
@@ -152,11 +160,6 @@ footer {
     .social-icons {
         margin-right: 0.5rem;
     }
-}
-
-.copyright {
-    font-size: 0.7rem;
-    margin-left: 1rem;
 }
 
 .social-icons {
