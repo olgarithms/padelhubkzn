@@ -7,7 +7,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #FFFFFF;
-    color: #5281EB;
+    color: #5281eb;
     overflow-x: hidden;
     position: relative;
 }
@@ -20,6 +20,7 @@ body {
     height: 100%;
     z-index: -1;
     display: flex;
+    flex-direction: row; /* Default horizontal */
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
@@ -27,19 +28,24 @@ body {
     background-color: transparent;
 }
 
+/* Stack gallery vertically on mobile with larger images */
+@media (max-width: 768px) {
+    .gallery-background {
+        flex-direction: column; /* Stack images vertically */
+        padding: 1rem 1rem 80px 1rem; /* Add space at bottom for footer */
+    }
+    .gallery-image {
+        max-width: 90%; /* Increased from 80% for larger images */
+        margin-bottom: 2rem; /* More space between images */
+    }
+    .gallery-image:last-child {
+        margin-bottom: 0; /* Remove margin on last image */
+    }
+}
+
 .gallery-image {
     max-width: 20%;
     height: auto;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .gallery-image {
-        max-width: 40%; /* Larger images on mobile */
-    }
-    .gallery-background {
-        padding: 1rem; /* Reduce padding */
-    }
 }
 
 .animated-text {
@@ -51,16 +57,18 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: moveRightToLeft 2000s linear infinite; /* Doubled to 2000s for desktop */
+    animation: moveRightToLeft 1000s linear infinite; /* Same as desktop */
     animation-delay: 0s;
     animation-play-state: running;
+    z-index: 1; /* Ensure above gallery */
 }
 
-/* Responsive font size and animation for mobile */
+/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     .animated-text {
-        font-size: 3rem; /* Smaller text for mobile */
-        animation: moveRightToLeft 1000s linear infinite; /* Doubled to 1000s for mobile */
+        font-size: 10rem; /* Keep at 10rem */
+        animation: moveRightToLeft 1000s linear infinite;
+        top: 40%; /* Adjust to avoid footer overlap */
     }
 }
 
@@ -76,14 +84,23 @@ body {
         100% { transform: translateX(-200%) translate(-50%, -50%); } /* Extend for mobile */
     }
     .animated-text {
-        animation-duration: 1000s; /* Slower on mobile */
+        animation-duration: 1000s; /* Slower and consistent */
         animation-play-state: running; /* Force play on mobile */
     }
 }
 
-/* Prevent pausing on inactivity */
 body:hover .animated-text {
     animation-play-state: running;
+}
+
+/* Adjust for mobile overflow and footer space */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto; /* Allow vertical scroll if needed */
+    }
+    .gallery-background {
+        height: calc(100% - 80px); /* Reserve space for footer */
+    }
 }
 
 footer {
@@ -96,8 +113,9 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
+    z-index: 2; /* Above animation */
     min-height: 50px;
+    height: 80px; /* Fixed height for clarity */
 }
 
 .copyright {
@@ -127,6 +145,7 @@ footer {
     footer {
         flex-direction: column;
         min-height: 80px; /* More space for stacked elements */
+        height: 80px; /* Consistent with desktop */
     }
     .copyright {
         margin-left: 0;
