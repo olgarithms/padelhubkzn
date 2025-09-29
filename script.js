@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const textElement = document.querySelector('.animated-text');
-    const text = 'padelhubkzn';
+    const text = 'PadelHub Kozani ';
     textElement.textContent = '';
     for (let i = 0; i < 30; i++) {
         textElement.textContent += text;
